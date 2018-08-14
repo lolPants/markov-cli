@@ -1,6 +1,6 @@
 /**
  * @param {string[]} lines All input text seperated by newline
- * @returns {Promise.<Object>}
+ * @returns {Object}
  */
 const analyze = lines => {
   let model = {}

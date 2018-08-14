@@ -16,32 +16,28 @@ const { select } = require('weighted-array')
 
 /**
  * @param {Token[]} model Model Object
- * @returns {Promise.<string>}
+ * @returns {string}
  */
-const generate = model => new Promise((resolve, reject) => {
-  try {
-    let string = ''
-    let startTokens = model.filter(x => x.start)
+const generate = model => {
+  let string = ''
+  let startTokens = model.filter(x => x.start)
 
-    /**
-     * @type {Token}
-     */
-    let current = select(startTokens.map(x => ({ weight: x.count, value: x }))).value
+  /**
+   * @type {Token}
+   */
+  let current = select(startTokens.map(x => ({ weight: x.count, value: x }))).value
 
-    string += current.token
+  string += current.token
 
-    while (true) { // eslint-disable-line
-      let next = select(current.next.map(x => ({ weight: x.weight, value: x.token }))).value
-      if (next === '\n') break
+  while (true) { // eslint-disable-line
+    let next = select(current.next.map(x => ({ weight: x.weight, value: x.token }))).value
+    if (next === '\n') break
 
-      current = model.find(x => x.token === next)
-      string += ` ${current.token}`
-    }
-
-    resolve(string)
-  } catch (err) {
-    reject(err)
+    current = model.find(x => x.token === next)
+    string += ` ${current.token}`
   }
-})
+
+  return string
+}
 
 module.exports = { generate }
