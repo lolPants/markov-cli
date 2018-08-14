@@ -4,7 +4,7 @@ const { expect } = require('chai')
 
 // Local Package
 const { analyze, generate, mapModel } = require('../src/index.js')
-const { analyzeErrors, generateErrors } = require('../src/helpers/errors.js')
+const { analyzeErrors, generateErrors, mapModelErrors } = require('../src/helpers/errors.js')
 
 // Test Data
 const { testInput, testModel, testMapped } = require('./data.js')
@@ -49,6 +49,36 @@ describe('analyze()', () => {
 
     it('should return an Object', () => {
       expect(analyze(['a b c', '', 'd e f'])).to.be.an('object')
+    })
+  })
+})
+
+describe('mapModel()', () => {
+  it('should be a function', () => {
+    expect(mapModel).to.be.a('function')
+  })
+
+  describe('input types', () => {
+    it('should accept an Object literal', () => {
+      expect(() => { mapModel(testModel) }).to.not.throw()
+    })
+
+    it('should throw when given a string', () => {
+      expect(() => { mapModel('string') }).to.throw(mapModelErrors.invalidInput)
+    })
+
+    it('should throw when given a number', () => {
+      expect(() => { mapModel(5) }).to.throw(mapModelErrors.invalidInput)
+    })
+
+    it('should throw when given an Array', () => {
+      expect(() => { mapModel([]) }).to.throw(mapModelErrors.invalidInput)
+    })
+  })
+
+  describe('return types', () => {
+    it('should return an Object', () => {
+      expect(mapModel(testModel)).to.be.an('array')
     })
   })
 })

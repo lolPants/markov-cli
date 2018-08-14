@@ -1,4 +1,27 @@
+const { mapModelErrors: errors } = require('./errors.js')
+
+/**
+ * @typedef {Object} Token
+ * @property {string} token
+ * @property {number} count
+ * @property {boolean} start
+ * @property {Word[]} next
+ */
+
+/**
+ * @typedef {Object} Word
+ * @property {string} token
+ * @property {number} weight
+ */
+
+/**
+ * @param {Object} model Raw Model
+ * @returns {Token[]}
+ */
 const mapModel = model => {
+  // Input Validation
+  if (model.constructor !== Object) throw errors.invalidInput
+
   let output = Object.entries(model)
     .map(x => {
       let [key, value] = x
