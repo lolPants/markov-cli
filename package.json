@@ -1,7 +1,7 @@
 {
   "name": "markov-cli",
   "version": "0.1.0",
-  "description": "CLI to analyse text into a Markov Chain and generate sentences from them.",
+  "description": "CLI to analyze text into a Markov Chain and generate sentences from them.",
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint --color src/",

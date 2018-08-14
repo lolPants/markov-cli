@@ -5,7 +5,7 @@ const { expect } = require('chai')
 // Local Package
 const { analyze, generate } = require('../src/index.js')
 
-describe('analyse()', () => {
+describe('analyze()', () => {
   it('should be a function', () => {
     expect(analyze).to.be.a('function')
   })

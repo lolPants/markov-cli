@@ -5,7 +5,7 @@
 [![Dependencies](https://img.shields.io/david/lolpants/markov-cli.svg?maxAge=3600)](https://david-dm.org/lolpants/markov-cli)
 [![Coverage Status](https://coveralls.io/repos/github/lolPants/markov-cli/badge.svg?branch=master)](https://coveralls.io/github/lolPants/markov-cli?branch=master)
 
-##### CLI to analyse text into a Markov Chain and generate sentences from them.
+##### CLI to analyze text into a Markov Chain and generate sentences from them.
 
 ## 💾 Installation
 The package is on the NPM registry as `markov-cli`. Simply install it globally with your NPM client of choice.
