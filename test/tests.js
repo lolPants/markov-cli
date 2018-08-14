@@ -35,6 +35,22 @@ describe('analyze()', () => {
       expect(() => { analyze({ object: true }) }).to.throw(analyzeErrors.invalidInput)
     })
   })
+
+  describe('return types', () => {
+    it('should return an Object', () => {
+      expect(analyze(testInput)).to.be.an('object')
+    })
+  })
+
+  describe('handling empty lines', () => {
+    it('should not throw', () => {
+      expect(() => { analyze(['a b c', '', 'd e f']) }).to.not.throw()
+    })
+
+    it('should return an Object', () => {
+      expect(analyze(['a b c', '', 'd e f'])).to.be.an('object')
+    })
+  })
 })
 
 describe('generate()', () => {
