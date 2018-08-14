@@ -11,7 +11,9 @@ program
   .action(analyze)
 
 program
-  .command('generate <file>')
+  .command('generate <model>')
+  .alias('g')
+  .description('read markov model and generate a string')
   .action(generate)
 
 program
