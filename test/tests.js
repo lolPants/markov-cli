@@ -75,4 +75,10 @@ describe('generate()', () => {
       expect(() => { generate({ object: true }) }).to.throw(generateErrors.invalidInput)
     })
   })
+
+  describe('return types', () => {
+    it('should return an Array', () => {
+      expect(generate(testMapped)).to.be.a('string')
+    })
+  })
 })
