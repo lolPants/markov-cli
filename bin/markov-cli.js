@@ -5,7 +5,9 @@ const generate = require('./generate.js')
 
 program
   .command('analyze <file>')
-  .description('run setup commands for all envs')
+  .alias('a')
+  .description('analyse file of strings and output a markov model')
+  .option('-R, --readable', 'JSON output is formatted in a readble way')
   .action(analyze)
 
 program
@@ -15,5 +17,3 @@ program
 program
   .version(require('../package.json').version)
   .parse(process.argv)
-
-if (program.args.length === 0) program.help()
