@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "CLI to analyze text into a Markov Chain and generate sentences from them.",
   "main": "src/index.js",
+  "bin": "bin/markov-cli.js",
   "scripts": {
     "lint": "eslint --color src/",
     "mocha": "nyc --reporter=html --reporter=text mocha",
@@ -36,6 +37,8 @@
     "nyc": "^12.0.2"
   },
   "dependencies": {
+    "chalk": "^2.4.1",
+    "commander": "^2.17.1",
     "weighted-array": "^0.2.0"
   }
 }
