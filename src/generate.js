@@ -1,4 +1,5 @@
 const { select } = require('weighted-array')
+const { generateErrors: errors } = require('./helpers/errors.js')
 
 /**
  * @typedef {Object} Token
@@ -19,6 +20,9 @@ const { select } = require('weighted-array')
  * @returns {string}
  */
 const generate = model => {
+  // Input Validation
+  if (!Array.isArray(model)) throw errors.invalidInput
+
   let string = ''
   let startTokens = model.filter(x => x.start)
 

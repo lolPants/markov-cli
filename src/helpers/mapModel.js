@@ -1,9 +1,3 @@
-const fs = require('fs')
-const util = require('util')
-
-const readAsync = util.promisify(fs.readFile)
-const writeAsync = util.promisify(fs.writeFile)
-
 const mapModel = model => {
   let output = Object.entries(model)
     .map(x => {
@@ -22,4 +16,4 @@ const mapModel = model => {
   return output
 }
 
-module.exports = { readAsync, writeAsync, mapModel }
+module.exports = { mapModel }

@@ -1,10 +1,15 @@
+const { analyzeErrors: errors } = require('./helpers/errors.js')
+
 /**
  * @param {string[]} lines All input text seperated by newline
  * @returns {Object}
  */
 const analyze = lines => {
-  let model = {}
+  // Input Validation
+  if (!Array.isArray(lines)) throw errors.invalidInput
+  if (!lines.every(x => typeof x === 'string')) throw errors.invalidInput
 
+  let model = {}
   for (let line of lines) {
     try {
       let tokens = line.split(' ')

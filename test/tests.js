@@ -3,11 +3,11 @@ const { describe, it } = require('mocha')
 const { expect } = require('chai')
 
 // Local Package
-const { analyze, generate } = require('../src/index.js')
-const { analyzeErrors, generateErrors } = require('../src/errors.js')
+const { analyze, generate, mapModel } = require('../src/index.js')
+const { analyzeErrors, generateErrors } = require('../src/helpers/errors.js')
 
 // Test Data
-const { testData } = require('./data.js')
+const { testInput, testModel, testMapped } = require('./data.js')
 
 describe('analyze()', () => {
   it('should be a function', () => {
@@ -16,11 +16,11 @@ describe('analyze()', () => {
 
   describe('input types', () => {
     it('should accept an Array', () => {
-      expect(() => { analyze(testData) }).to.not.throw()
+      expect(() => { analyze([]) }).to.not.throw()
     })
 
     it('should ONLY accept a string[]', () => {
-      expect(() => { analyze(testData) }).to.not.throw()
+      expect(() => { analyze([1, 2, 'three']) }).to.throw(analyzeErrors.invalidInput)
     })
 
     it('should throw when given a string', () => {
@@ -43,8 +43,8 @@ describe('generate()', () => {
   })
 
   describe('input types', () => {
-    it('should accept an Object literal', () => {
-      expect(() => { generate({ object: true }) }).to.not.throw()
+    it('should accept an Array', () => {
+      expect(() => { generate(testMapped) }).to.not.throw()
     })
 
     it('should throw when given a string', () => {
@@ -55,8 +55,8 @@ describe('generate()', () => {
       expect(() => { generate(5) }).to.throw(generateErrors.invalidInput)
     })
 
-    it('should throw when given an Array', () => {
-      expect(() => { generate([1, 2, 3]) }).to.throw(generateErrors.invalidInput)
+    it('should throw when given an Object literal', () => {
+      expect(() => { generate({ object: true }) }).to.throw(generateErrors.invalidInput)
     })
   })
 })
