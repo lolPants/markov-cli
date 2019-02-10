@@ -1,4 +1,4 @@
-const { select } = require('weighted-array')
+const { select } = require('weighted-map')
 const { generateErrors: errors } = require('./helpers/errors.js')
 
 /**
@@ -27,14 +27,19 @@ const generate = model => {
   let startTokens = model.filter(x => x.start)
 
   /**
-   * @type {Token}
+   * @type {Map<Token, number>}
    */
-  let current = select(startTokens.map(x => ({ weight: x.count, value: x }))).value
+  const map = new Map(startTokens.map(x => [x, x.count]))
+  let current = select(map)
 
   string += current.token
 
   while (true) { // eslint-disable-line
-    let next = select(current.next.map(x => ({ weight: x.weight, value: x.token }))).value
+    /**
+     * @type {Map<string, number>}
+     */
+    const m = new Map(current.next.map(x => [x.token, x.weight]))
+    let next = select(m)
     if (next === '\n') break
 
     current = model.find(x => x.token === next)
