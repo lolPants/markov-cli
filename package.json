@@ -1,6 +1,6 @@
 {
   "name": "markov-cli",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "CLI to analyze text into a Markov Chain and generate sentences from them.",
   "main": "src/index.js",
   "bin": "bin/markov-cli.js",
@@ -31,14 +31,14 @@
   "homepage": "https://github.com/lolPants/markov-cli#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "coveralls": "^3.0.2",
-    "eslint": "^5.13.0",
-    "mocha": "^5.2.0",
-    "nyc": "^13.2.0"
+    "coveralls": "^3.0.4",
+    "eslint": "^6.0.1",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1"
   },
   "dependencies": {
     "chalk": "^2.4.2",
-    "commander": "^2.19.0",
-    "weighted-map": "^0.1.0"
+    "commander": "^2.20.0",
+    "weighted-map": "^0.3.1"
   }
 }
