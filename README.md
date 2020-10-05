@@ -1,3 +1,8 @@
+# NOTE: Now superseded by [this Golang port](https://github.com/lolPants/markov).
+This repo is now archived.
+
+---
+
 # 💬 Markov CLI
 [![NPM version](https://img.shields.io/npm/v/markov-cli.svg?maxAge=3600)](https://www.npmjs.com/package/markov-cli)
 [![NPM downloads](https://img.shields.io/npm/dt/markov-cli.svg?maxAge=3600)](https://www.npmjs.com/package/markov-cli)
